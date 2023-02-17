@@ -65,7 +65,8 @@ RUN apt-get update && apt-get install -y \
     grim \
     grimshot \
     slurp \
-    wl-clipboard
+    wl-clipboard \
+    vim
 
 # Install JetBrainsMono Fonts
 RUN curl -LJO https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip && \
