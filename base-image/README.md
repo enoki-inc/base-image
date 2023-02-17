@@ -8,9 +8,6 @@ sudo docker run --name enoki-base \
 -e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
 -e WLR_BACKENDS=headless \
 -e WLR_LIBINPUT_NO_DEVICES=1 \
--e TIMEOUT_TIME=10800 \
--e CURSOR_SIZE=24 \
--e FONT_SIZE=12 \
 -e TEAM_NAME=enoki \
 -e WORKSPACE_NAME=test-workspace \
 -e USERS=2 \
