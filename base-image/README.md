@@ -2,7 +2,7 @@ instructions to build the image:
 
 sudo docker build -t enoki-base -f Dockerfile .
 
-sudo docker run --name u-test \
+sudo docker run --name enoki-base \
 --privileged \
 -e XDG_RUNTIME_DIR=/home/dev \
 -e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
@@ -11,6 +11,9 @@ sudo docker run --name u-test \
 -e TIMEOUT_TIME=10800 \
 -e CURSOR_SIZE=24 \
 -e FONT_SIZE=12 \
+-e TEAM_NAME=enoki \
+-e WORKSPACE_NAME=test-workspace \
+-e USERS=2
 -e --user=dev \
 -v /var/run/docker.sock:/var/run/docker.sock \
 -v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/home/1000/$WAYLAND_DISPLAY \
