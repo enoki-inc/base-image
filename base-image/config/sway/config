@@ -214,7 +214,7 @@ exec swayidle -w timeout $TIMEOUT_TIME 'swaymsg exit'
 
 exec 'python3 etc/sway/launch_terminal_history.py'
 # Dynamic seats
-exec etc/sway/seats $SEATS
+exec etc/sway/seats $USERS
 
 #exec socat TCP-LISTEN:7023,fork UNIX-CONNECT:/tmp/sway-ipc.sock
 
