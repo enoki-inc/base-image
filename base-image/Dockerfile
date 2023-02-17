@@ -141,5 +141,4 @@ COPY ./config /etc
 EXPOSE 6080-6090
 
 USER $USER
-COPY entrypoint.sh /
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/bin/sh", "-c", "set -o errexit; case \"$1\" in sh|bash) set -- \"$@\" ;; *) set -- sway ;; esac; exec \"$@\"", "--"]
