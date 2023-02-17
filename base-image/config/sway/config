@@ -1,6 +1,4 @@
-# Default config for sway-aither
-# Read `man 5 sway` for a complete reference.
-
+# Default config for enoki base workspace
 
 # Base16 Colorscheme, default to solarized 
 set $base00 #002b36
@@ -22,7 +20,7 @@ set $base0F #d33682
 
 # Not sure the brackets work here, also should we be using absolute directories
 set $font 'JetBrainsMono Nerd Font'
-set $font-size 12
+set $size-of-font $font-size
 
 set $floating-border-size 5
 set $tiling-inner-gaps 10
@@ -68,7 +66,7 @@ focus_follows_mouse no
 focus_on_window_activation none
 
 # Font
-font pango:$font $font-size
+font pango:$font $size-of-font
 
 
 # Gaps
@@ -211,7 +209,7 @@ seat seat8 attach "8"
 seat seat9 attach "9"
 seat seat10 attach "10"
 
-exec swayidle -w timeout 10800 'swaymsg exit'
+exec swayidle -w timeout $timeout-time 'swaymsg exit'
 
 set $ip 0.0.0.0  
 exec wayvnc -C /etc/wayvnc/config -o HEADLESS-1 -s seat0 $ip 5900
