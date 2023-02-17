@@ -13,7 +13,7 @@ sudo docker run --name enoki-base \
 -e FONT_SIZE=12 \
 -e TEAM_NAME=enoki \
 -e WORKSPACE_NAME=test-workspace \
--e USERS=2
+-e USERS=2 \
 -e --user=dev \
 -v /var/run/docker.sock:/var/run/docker.sock \
 -v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/home/1000/$WAYLAND_DISPLAY \
