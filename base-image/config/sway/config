@@ -149,7 +149,7 @@ bindsym Mod1+Shift+Right resize grow width 50
 bindsym Mod1+Shift+q kill
 
 # Spawn an alacritty terminal
-set $host alacritty -o window.opacity=0.8 --config-file /etc/alacritty/host.yml
+set $host alacritty -o window.opacity=0.8 --config-file /etc/alacritty/host.yml --working-directory home/$USER
 bindsym Mod1+Shift+Return exec $host
 
 # Toggle opacity
