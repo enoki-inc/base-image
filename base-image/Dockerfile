@@ -109,6 +109,19 @@ RUN  apt install -y firefox firefox-geckodriver
 # Install VSCode
 RUN curl -L https://go.microsoft.com/fwlink/?LinkID=760868 -o vscode.deb && \
     dpkg -i vscode.deb
+
+# Install nwg-launcher
+RUN git clone https://github.com/nwg-piotr/nwg-launchers.git && \
+    cd nwg-launchers && \
+    meson builddir -Dbuildtype=release && \
+    ninja -C builddir
+
+# Install nwg-dock
+RUN git clone https://github.com/nwg-piotr/nwg-dock.git && \
+    cd nwg-dock && \
+    make get && \
+    make build && \
+    make install
     
 # Create a user and give it passwordless sudo privileges
 ENV USER="dev"
