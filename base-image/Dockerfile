@@ -23,18 +23,14 @@ RUN apt-get update && apt-get install -y \
     seatd \
     fonts-dejavu \
     sway \
-#    sway-desktop-documentation \
     xwayland \
     dbus \
     dbus-x11 \
     foot \
-#    bemenu \
     dmenu \
-    epiphany \
     swaylock \
     swaybg \
     swayidle \
-#    elogind-dbg \
     python3 \
     python3-pip \
     python3-numpy \
@@ -44,33 +40,13 @@ RUN apt-get update && apt-get install -y \
     curl \
     cargo \
     cmake \
-    snapd \
     wget \
     libfreetype6-dev \
     libfontconfig1-dev \
     xorg-dev \
     pkg-config \
     fontconfig \
-    unzip
-
-RUN curl -LJO https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip && \
-    unzip JetBrainsMono.zip -d /etc/fonts && \
-    mv /etc/fonts/*.ttf /usr/local/share/fonts/ && \
-    fc-cache -f -v
-    
-RUN git clone https://github.com/alacritty/alacritty.git
-
-RUN cd alacritty && \
-    cargo build --release && \
-    cp target/release/alacritty /usr/local/bin/
-
-# Install elogind
-#RUN apt-get update && apt-get install -y \
-#    elogind
-
-# Install additional packages
-RUN apt-get install -y \
-#    aml-dev \
+    unzip \
     fonts-jetbrains-mono \
     fonts-noto \
     git \
@@ -83,9 +59,33 @@ RUN apt-get install -y \
     socat \
     waybar \
     wayvnc \
-    geany \
-    nautilus
+    nautilus \
+    clipman \
+    libossp-uuid16 \
+    grim \
+    grimshot \
+    slurp \
+    wl-clipboard
 
+# Install JetBrainsMono Fonts
+RUN curl -LJO https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip && \
+    unzip JetBrainsMono.zip -d /etc/fonts && \
+    mv /etc/fonts/*.ttf /usr/local/share/fonts/ && \
+    fc-cache -f -v
+
+# Install our custom mouse cursors
+RUN mkdir -p /etc/aither-tools && \
+    curl -o /tmp/aither-tools.tar.gz -L "https://github.com/enoki-inc/aither-tools/archive/refs/tags/1.1.tar.gz" && \
+    tar xf /tmp/aither-tools.tar.gz -C /etc/aither-tools --strip-components=1 && \
+    mv /etc/aither-tools/Bibata-Cursors/* /usr/share/icons
+
+# Install alacritty
+RUN git clone https://github.com/alacritty/alacritty.git
+RUN cd alacritty && \
+    cargo build --release && \
+    cp target/release/alacritty /usr/local/bin/
+
+# Install firefox
 RUN apt-get install -y software-properties-common && apt-get update && add-apt-repository ppa:mozillateam/ppa -y && echo '\n\
 Package: *\n\
 Pin: release o=LP-PPA-mozillateam\n\
@@ -98,55 +98,7 @@ Pin-Priority: -1\n\
 RUN echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' | sudo tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox
 RUN  apt install -y firefox firefox-geckodriver
 
-# Install clipman, ossp-uuid, and glow from edge repositories
-RUN apt-get install -y \
-    clipman \
-    libossp-uuid16
-#    glow
-
-# Install alacritty, grim, grimshot, slurp, wl-clipboard, and font-noto-emoji from community repositories
-RUN apt-get install -y \
-#    alacritty \
-    grim \
-    grimshot \
-    slurp \
-    wl-clipboard \
-    fonts-noto-color-emoji
-
-# Install our modified sway that extends per-container border colors and custom mouse cursors
-RUN mkdir -p /etc/aither-tools && \
-    curl -o /tmp/aither-tools.tar.gz -L "https://github.com/enoki-inc/aither-tools/archive/refs/tags/1.1.tar.gz" && \
-    tar xf /tmp/aither-tools.tar.gz -C /etc/aither-tools --strip-components=1 && \
-    mv /etc/aither-tools/Bibata-Cursors/* /usr/share/icons
-     
-RUN mkdir -p /etc/sway-launcher-desktop && \
-    curl -o /tmp/sway-launcher-desktop.tar.gz -L "https://github.com/Biont/sway-launcher-desktop/archive/refs/tags/v1.6.0.tar.gz" && \
-    tar xf /tmp/sway-launcher-desktop.tar.gz -C /etc/sway-launcher-desktop --strip-components=1
-
-# Install dependencies
-RUN apt-get update && apt-get install -y \
-    curl \
-    build-essential \
-    nodejs \
-    npm
-
-# Install code-server
-RUN npm config set python python3
-#RUN npm install --global code-server --unsafe-perm
-
-# Install other npm packages
-RUN npm install --global minimist \
-                         yauzl \
-                         yazl \
-                         @microsoft/1ds-core-js \
-                         spdlog \
-                         xterm-headless \
-                         @parcel/watcher \
-                         @vscode/ripgrep \
-                         vscode-proxy-agent \
-                         vscode-regexpp \
-                         keytar
-
+# Install VSCode
 RUN curl -L https://go.microsoft.com/fwlink/?LinkID=760868 -o vscode.deb && \
     dpkg -i vscode.deb
     
@@ -165,7 +117,6 @@ RUN mkdir -p /etc/noVNC && \
 COPY ./config /etc
 
 EXPOSE 6080-6090
-EXPOSE 8080
 
 USER $USER
 COPY entrypoint.sh /
