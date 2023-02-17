@@ -20,7 +20,7 @@ set $base0F #d33682
 
 # Not sure the brackets work here, also should we be using absolute directories
 set $font 'JetBrainsMono Nerd Font'
-set $font-size $FONT_SIZE
+set $font-size 12
 
 set $floating-border-size 5
 set $tiling-inner-gaps 10
@@ -44,7 +44,7 @@ set $seat8-cursor Bibata-Modern-Orange
 set $seat9-cursor Bibata-Modern-Magenta
 set $seat10-cursor Bibata-Modern-Dark 
 
-set $cursor-size $CURSOR_SIZE
+set $cursor-size 24
 
 # This should be compatible with the unpatched version of Sway
 
