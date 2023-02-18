@@ -5,6 +5,8 @@ sudo docker build -t enoki-base -f Dockerfile .
 sudo docker run --name enoki-base \
 --privileged \
 -e XDG_RUNTIME_DIR=/home/dev \
+-e XDG_CACHE_HOME=/home/dev \
+-e XDG_CONFIG_HOME=/home/dev/.cache \
 -e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
 -e WLR_BACKENDS=headless \
 -e WLR_LIBINPUT_NO_DEVICES=1 \
