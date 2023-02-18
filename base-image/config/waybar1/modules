@@ -98,7 +98,7 @@
     "custom/vscode": {
          "format": "",
          "tooltip": false,
-         "on-click": "exec code",
+         "on-click": "exec code --no-sandbox",
     },
 
     "custom/filesearch": {
