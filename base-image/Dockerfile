@@ -137,7 +137,9 @@ RUN mkdir -p /etc/noVNC && \
     git clone https://github.com/novnc/websockify.git /etc/noVNC/utils/websockify
     
 COPY ./config /etc
-
+RUN mv -f /etc/code-url-handler.desktop /usr/share/applications/code-url-handler.desktop && \
+    mv -f /etc/code.desktop /usr/share/applications/code.desktop
+    
 EXPOSE 6080-6090
 
 USER $USER
