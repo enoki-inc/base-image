@@ -79,14 +79,16 @@ RUN apt-get update && apt-get install -y \
 RUN curl -LJO https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip && \
     unzip JetBrainsMono.zip -d /etc/fonts && \
     mv /etc/fonts/*.ttf /usr/local/share/fonts/ && \
-    fc-cache -f -v
+    fc-cache -f -v && \
+    rm -rf JetBrainsMono.zip
 
 # Install our custom mouse cursors
 RUN mkdir -p /etc/aither-tools && \
     curl -o /tmp/aither-tools.tar.gz -L "https://github.com/enoki-inc/aither-tools/archive/refs/tags/1.1.tar.gz" && \
     tar xf /tmp/aither-tools.tar.gz -C /etc/aither-tools --strip-components=1 && \
-    mv /etc/aither-tools/Bibata-Cursors/* /usr/share/icons
-
+    mv /etc/aither-tools/Bibata-Cursors/* /usr/share/icons && \
+    rm -rf /tmp/aither-tools.tar.gz
+    
 # Install alacritty
 RUN git clone https://github.com/alacritty/alacritty.git
 RUN cd alacritty && \
@@ -108,7 +110,8 @@ RUN  apt install -y firefox firefox-geckodriver
 
 # Install VSCode
 RUN curl -L https://go.microsoft.com/fwlink/?LinkID=760868 -o vscode.deb && \
-    dpkg -i vscode.deb
+    dpkg -i vscode.deb && \
+    rm -rf vscode.deb
 
 # Install nwg-launcher
 RUN git clone https://github.com/nwg-piotr/nwg-launchers.git && \
