@@ -93,7 +93,8 @@ RUN mkdir -p /etc/aither-tools && \
 RUN git clone https://github.com/alacritty/alacritty.git
 RUN cd alacritty && \
     cargo build --release && \
-    cp target/release/alacritty /usr/local/bin/
+    cp target/release/alacritty /usr/local/bin/ && \
+    rm -rf /alacritty
 
 # Install firefox
 RUN apt-get install -y software-properties-common && apt-get update && add-apt-repository ppa:mozillateam/ppa -y && echo '\n\
@@ -118,14 +119,16 @@ RUN git clone https://github.com/nwg-piotr/nwg-launchers.git && \
     cd nwg-launchers && \
     meson builddir -Dbuildtype=release && \
     ninja -C builddir && \
-    ninja -C builddir install
+    ninja -C builddir install && \
+    rm -rf /nwg-launchers
 
 # Install nwg-dock
 RUN git clone https://github.com/nwg-piotr/nwg-dock.git && \
     cd nwg-dock && \
     make get && \
     make build && \
-    make install
+    make install && \
+    rm -rf /nwg-dock
     
 # Create a user and give it passwordless sudo privileges
 ENV USER="dev"
