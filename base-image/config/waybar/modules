@@ -1,0 +1,77 @@
+// Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
+//
+// Waybar modules configuration
+{
+	// waybar-custom
+    "custom/chrome": {
+         "format": "爵",
+         "tooltip": false,
+         "on-click": "flatpak run com.google.Chrome",
+    },
+
+    "custom/browser": {
+	 "format": "",
+         "tooltip": false,
+         "on-click": "exec firefox",
+    },
+
+    "custom/vscode": {
+         "format": "",
+         "tooltip": false,
+         "on-click": "exec code --no-sandbox",
+    },
+
+    "custom/filesearch": {
+         "format": "",
+         "tooltip": false,
+         "on-click": "exec nautilus",
+    },
+
+    "custom/opacityup": {
+         "format": "",
+         "tooltip": false,
+         "on-click": "sway opacity plus 0.1",
+    },
+
+    "custom/opacitydown": {
+         "format": "頋",
+         "tooltip": false,
+         "on-click": "sway opacity minus 0.1",
+    },
+
+    "custom/screenshot": {
+         "format": "",
+         "tooltip": false,
+         "on-click": "exec bash etc/waybar1/screenshot.sh",
+    },
+
+    "custom/terminal": {
+         "format": "",
+         "tooltip": false,
+         "on-click": "exec alacritty -o window.opacity=0.8 --working-directory home/$USER",
+    },
+
+    "custom/terminal2": {
+         "format": "",
+         "tooltip": false,
+         "on-click": "exec bash $HOME/.config/waybar/terminal2.sh",
+    },
+
+    "custom/kill": {
+         "format": "",
+         "tooltip": false,
+         "on-click": "sway kill",
+    },
+
+    "custom/share": {
+         "format": "",
+         "tooltip": false,
+         "on-click": "exec sh $HOME/.config/waybar/shared.sh",
+    },
+
+    "custom/power": {
+         "format": "襤",
+         "tooltip": false,
+         "on-click": "alacritty -e $HOME/.local/share/bin/fzf-power-menu",
+    }
+}
