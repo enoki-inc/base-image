@@ -219,7 +219,7 @@ exec etc/sway/seats $USERS
 #exec socat TCP-LISTEN:7023,fork UNIX-CONNECT:/tmp/sway-ipc.sock
 
 #exec waybar --config /etc/waybar/config -s /etc/waybar/style.css
-exec waybar --config /etc/waybar/config -s /etc/waybar1/style.css
+exec waybar --config /etc/waybar/config -s /etc/waybar/style.css
 exec nwg-dock
 
 
