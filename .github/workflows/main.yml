@@ -30,6 +30,9 @@ jobs:
         
     - name: Push to DockerHub
       run: docker push $DOCKER_HUB_USERNAME/$IMAGE_NAME
+      
+    - name: Log off of DockerHub
+      run: docker logout
 
     - name: Configure AWS credentials
       run: |
