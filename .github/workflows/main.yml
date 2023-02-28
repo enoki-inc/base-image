@@ -11,7 +11,8 @@ env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_REGION: 'us-east-1'
-  ECR_REGISTRY: '123456789012.dkr.ecr.us-east-1.amazonaws.com'
+  AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+  ECR_REGISTRY: '$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com'
   IMAGE_NAME: 'baseimage-ghactions-test'
 
 jobs:
@@ -41,7 +42,7 @@ jobs:
         aws configure set region $AWS_REGION
 
     - name: Log in to Amazon ECR
-      run: aws ecr get-login-password --region us-east-1 |  docker login --username AWS --password-stdin 537214722689.dkr.ecr.us-east-1.amazonaws.com
+      run: aws ecr get-login-password --region $AWS_REGION |  docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.$AWS_REGION.amazonaws.com
 
     - name: Build ECR image
       id: build-image
