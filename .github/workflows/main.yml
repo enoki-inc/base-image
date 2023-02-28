@@ -41,8 +41,7 @@ jobs:
         aws configure set region $AWS_REGION
 
     - name: Log in to Amazon ECR
-      id: login-ecr
-      uses: aws-actions/amazon-ecr-login@v1
+      run: aws ecr get-login-password --region us-east-1 |  docker login --username AWS --password-stdin 537214722689.dkr.ecr.us-east-1.amazonaws.com
 
     - name: Build ECR image
       id: build-image
@@ -50,6 +49,5 @@ jobs:
         docker tag $DOCKER_HUB_USERNAME/$IMAGE_NAME $ECR_REGISTRY/$IMAGE_NAME
         docker push $ECR_REGISTRY/$IMAGE_NAME
 
-    - name: Write ECR registry and image details to file
-      id: write-registry
-      run: echo "::set-output name=registry::$ECR_REGISTRY && echo ::set-output name=image::$IMAGE_NAME"
+    - name: Log off of ECR
+      run: docker logout
