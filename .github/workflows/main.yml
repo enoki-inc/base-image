@@ -26,7 +26,7 @@ jobs:
       run: docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_TOKEN docker.io
       
     - name: Build Docker image
-      run: docker build -t $IMAGE_NAME .
+      run: docker build -t $DOCKER_HUB_USERNAME/$IMAGE_NAME .
         
     - name: Push to DockerHub
       run: docker push $DOCKER_HUB_USERNAME/$IMAGE_NAME
@@ -44,7 +44,7 @@ jobs:
     - name: Build ECR image
       id: build-image
       run: |
-        docker tag $IMAGE_NAME $ECR_REGISTRY/$IMAGE_NAME
+        docker tag $DOCKER_HUB_USERNAME/$IMAGE_NAME $ECR_REGISTRY/$IMAGE_NAME
         docker push $ECR_REGISTRY/$IMAGE_NAME
 
     - name: Write ECR registry and image details to file
