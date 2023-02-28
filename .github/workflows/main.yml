@@ -21,7 +21,10 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
+      
+    - name: Check Secrets
+    - run: echo "$DOCKER_HUB_USERNAME"
+    
     - name: Build Docker image
       run: docker build -t $IMAGE_NAME .
 
