@@ -23,7 +23,7 @@ jobs:
       uses: actions/checkout@v2
       
     - name: Check Secrets
-    - run: |
+      run: |
           echo "DOCKER_HUB_USERNAME=$DOCKER_HUB_USERNAME"
     
     - name: Build Docker image
