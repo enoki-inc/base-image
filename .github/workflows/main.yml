@@ -37,7 +37,6 @@ jobs:
       run: docker logout
 
     - name: Login to Amazon ECR
-      id: ecr
       uses: jwalton/gh-ecr-login@v2.0.4
       with:
         access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -47,7 +46,6 @@ jobs:
     - run: docker build --tag $IMAGE_NAME .
 
     - name: Push to ECR
-      id: ecr
       uses: jwalton/gh-ecr-push@v1.3.6
       with:
         access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
