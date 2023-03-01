@@ -24,6 +24,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Login to ECR
+      id: ecr
+      uses: jwalton/gh-ecr-login@v1
+      with:
+        access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        region: us-east-1
+
     - name: Log in to DockerHub
       run: docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_TOKEN docker.io
       
