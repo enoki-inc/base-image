@@ -38,17 +38,22 @@ jobs:
 
     - name: Login to Amazon ECR
       id: ecr
-      uses: jwalton/gh-ecr-login@v1
+      uses: jwalton/gh-ecr-login@v2.0.4
       with:
         access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         region: us-east-1
+    
+    - run: docker build --tag $IMAGE_NAME .
 
-    - name: Build ECR image
-      id: build-image
-      run: |
-        docker tag $DOCKER_HUB_USERNAME/$IMAGE_NAME ${{ steps.ecr.outputs.account }}.dkr.ecr.us-east-1.amazonaws.com/$IMAGE_NAME
-        docker push ${{ steps.ecr.outputs.account }}.dkr.ecr.us-east-1.amazonaws.com/$IMAGE_NAME
-
+    - name: Push to ECR
+      id: ecr
+      uses: jwalton/gh-ecr-push@v1.3.6
+      with:
+        access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        region: us-east-1
+        image: $IMAGE_NAME
+    
     - name: Log off of ECR
       run: docker logout
