@@ -14,7 +14,7 @@ env:
   AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
   ECR_REGISTRY: '$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com'
   AWS_ECR_PASSWORD: ${{ secrets.AWS_ECR_PASSWORD }}  
-  IMAGE_NAME: 'baseimage-ghactions-test'
+  IMAGE_NAME: 'base-image'
 
 jobs:
   build-and-push:
