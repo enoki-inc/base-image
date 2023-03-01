@@ -36,12 +36,6 @@ jobs:
     - name: Log off of DockerHub
       run: docker logout
 
-    - name: Configure AWS credentials
-      run: |
-        aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
-        aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-        aws configure set region $AWS_REGION
-
     - name: Login to Amazon ECR
       id: ecr
       uses: jwalton/gh-ecr-login@v1
@@ -53,8 +47,8 @@ jobs:
     - name: Build ECR image
       id: build-image
       run: |
-        docker tag $DOCKER_HUB_USERNAME/$IMAGE_NAME $ECR_REGISTRY/$IMAGE_NAME
-        docker push $ECR_REGISTRY/$IMAGE_NAME
+        docker tag $DOCKER_HUB_USERNAME/$IMAGE_NAME ${{ steps.ecr.outputs.account }}.dkr.ecr.us-east-1.amazonaws.com/$IMAGE_NAME
+        docker push ${{ steps.ecr.outputs.account }}.dkr.ecr.us-east-1.amazonaws.com/$IMAGE_NAME
 
     - name: Log off of ECR
       run: docker logout
