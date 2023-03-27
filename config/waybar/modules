@@ -42,7 +42,7 @@
     "custom/screenshot": {
          "format": "",
          "tooltip": false,
-         "on-click": "exec bash etc/waybar1/screenshot.sh",
+         "on-click": "exec bash etc/waybar/screenshot.sh",
     },
 
     "custom/terminal": {
