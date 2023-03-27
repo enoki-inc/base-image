@@ -73,7 +73,8 @@ RUN apt-get update && apt-get install -y \
     libglib2.0-dev \
     libgtk-layer-shell-dev \
     meson \
-    libgtkmm-3.0-dev
+    libgtkmm-3.0-dev \
+    nomacs
 
 # Install JetBrainsMono Fonts
 RUN curl -LJO https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip && \
