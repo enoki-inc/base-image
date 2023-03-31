@@ -74,7 +74,8 @@ RUN apt-get update && apt-get install -y \
     libgtk-layer-shell-dev \
     meson \
     libgtkmm-3.0-dev \
-    nomacs
+    nomacs \
+    gh
 
 #Install shellgpt
 RUN pip install shell-gpt
