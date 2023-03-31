@@ -2,7 +2,10 @@ import os
 import subprocess
 
 if os.getenv('GHTOKEN') != "":
-    subprocess.run(["gh auth login --with-token " + os.getenv('GHTOKEN')], shell=True)
+    print(os.getenv('GHTOKEN'))
+    subprocess.run(['echo $GHTOKEN > /home/dev/ghtoken.txt'], shell=True)
+
+    subprocess.run(["gh auth login --with-token < /home/dev/ghtoken.txt"], shell=True)
     print("Successfully logged in to GitHub in Enoki Workspace!")
 
 else:
