@@ -76,6 +76,9 @@ RUN apt-get update && apt-get install -y \
     libgtkmm-3.0-dev \
     nomacs
 
+#Install shellgpt
+RUN pip install shell-gpt
+
 # Install JetBrainsMono Fonts
 RUN curl -LJO https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip && \
     unzip JetBrainsMono.zip -d /etc/fonts && \
@@ -150,4 +153,6 @@ RUN mv -f /etc/code-url-handler.desktop /usr/share/applications/code-url-handler
 EXPOSE 6080-6090
 
 USER $USER
+RUN code --install-extension github.copilot
+
 ENTRYPOINT ["/bin/sh", "-c", "set -o errexit; case \"$1\" in sh|bash) set -- \"$@\" ;; *) set -- sway ;; esac; exec \"$@\"", "--"]
