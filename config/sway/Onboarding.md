@@ -1,9 +1,9 @@
-# Welcome to Aither! 🚀 
+# Welcome to an Enoki Workspace! 🚀 
 
 ---
 - First things first, try scrolling in this window with the J and K keys
 
-- You will find your animal inspired seats on the top. Try to change the color of your terminal
+- The sudo password for your workspace is dev. Use this to install any additional apps or dependencies you may need
 
 - You will find your app launcher to your left
 
