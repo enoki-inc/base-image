@@ -3,8 +3,8 @@ import subprocess
 
 team_name = os.getenv('TEAM_NAME')
 workspace_name = os.getenv('WORKSPACE_NAME')
-filepath = f'home/dev/{team_name}/{workspace_name}/tmp/history.txt'
-command = f"cp home/dev/.bash_history {filepath}"
+filepath = f'/home/dev/{team_name}/{workspace_name}/tmp/history.txt'
+command = f"cp /home/dev/.bash_history {filepath}"
 
 directory = os.path.dirname(os.path.expanduser(filepath))
 if not os.path.exists(directory):
