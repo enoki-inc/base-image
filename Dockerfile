@@ -77,8 +77,9 @@ RUN apt-get update && apt-get install -y \
     nomacs \
     gh
 
-#Install shellgpt
-RUN pip install shell-gpt
+#Install pip packages
+RUN pip install shell-gpt \
+                awscli
 
 # Install JetBrainsMono Fonts
 RUN curl -LJO https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip && \
