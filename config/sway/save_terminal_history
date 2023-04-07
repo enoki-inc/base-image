@@ -1,0 +1,21 @@
+#!/bin/bash
+
+TEAM_NAME=$1
+WORKSPACE_NAME=$2
+FILEPATH="/home/dev/$TEAM_NAME/$WORKSPACE_NAME/tmp/history.txt"
+COMMAND="cp /home/dev/.bash_history $FILEPATH"
+
+DIRECTORY=$(dirname "${FILEPATH}")
+if [ ! -d "$DIRECTORY" ]; then
+  mkdir -p "$DIRECTORY"
+fi
+
+if [ ! -f "$FILEPATH" ]; then
+  # Create an empty file if it doesn't exist
+  touch "$FILEPATH"
+fi
+
+# Append the existing terminal commands to ~/.bash_history
+history -a "$FILEPATH"
+
+echo "Terminal history saved!"
