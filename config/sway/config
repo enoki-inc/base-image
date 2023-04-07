@@ -209,11 +209,11 @@ seat seat8 attach "8"
 seat seat9 attach "9"
 seat seat10 attach "10"
 
-exec swayidle -w timeout 60 'python3 etc/sway/save_terminal_history.py'
+exec swayidle -w timeout 60 'source /etc/sway/save_terminal_history $TEAM_NAME $WORKSPACE_NAME'
 exec swayidle -w timeout 10800 'swaymsg exit'
 
 exec 'python3 etc/sway/efs.py'
-exec 'python3 etc/sway/launch_terminal_history.py'
+exec etc/sway/launch_terminal_history $TEAM_NAME $WORKSPACE_NAME
 exec 'python3 etc/sway/ghlogin.py'
 exec 'python3 etc/sway/awslogin.py'
 
