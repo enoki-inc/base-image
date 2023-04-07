@@ -15,7 +15,7 @@ if not os.path.exists(os.path.expanduser(filepath)):
     subprocess.run(["touch", os.path.expanduser(filepath)], check=True)
 
 # Append the existing terminal commands to ~/.bash_history
-subprocess.run(["bash", "-c", "history", "-a"], shell=True)
+subprocess.run(["history", "-a"], shell=True)
 # Copy the history file to the new location
 subprocess.run([command], shell=True)
 
