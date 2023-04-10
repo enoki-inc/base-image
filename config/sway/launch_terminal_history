@@ -4,8 +4,7 @@ TEAM_NAME=$1
 WORKSPACE_NAME=$2
 
 # Saving the contents of history.txt to the bash_history file
-save_command="cp /home/dev/${TEAM_NAME}/${WORKSPACE_NAME}/tmp/history.txt /home/dev/.bash_history"
-eval $save_command
+echo "dev" | sudo -S cp /home/dev/${TEAM_NAME}/${WORKSPACE_NAME}/tmp/history-$WORKSPACE_NAME.txt /home/dev/.bash_history
 
 # Reloading the bash_history file
 history -r
