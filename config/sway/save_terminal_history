@@ -2,7 +2,7 @@
 
 TEAM_NAME=$1
 WORKSPACE_NAME=$2
-FILEPATH="/home/dev/$TEAM_NAME/$WORKSPACE_NAME/tmp/history.txt"
+FILEPATH="/home/dev/$TEAM_NAME/$WORKSPACE_NAME/tmp/history-$WORKSPACE_NAME.txt"
 COMMAND="cp /home/dev/.bash_history $FILEPATH"
 
 DIRECTORY=$(dirname "${FILEPATH}")
@@ -16,6 +16,6 @@ if [ ! -f "$FILEPATH" ]; then
 fi
 
 # Copy terminal commands from ~/.bash_history to tmp/history.txt
-eval $COMMAND
+echo dev | sudo -S $COMMAND
 
 echo "Terminal history saved!"
