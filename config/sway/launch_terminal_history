@@ -8,7 +8,6 @@ save_command="cp /home/dev/${TEAM_NAME}/${WORKSPACE_NAME}/tmp/history.txt /home/
 eval $save_command
 
 # Reloading the bash_history file
-history -a
 history -r
 
 echo "Terminal history loaded!"
