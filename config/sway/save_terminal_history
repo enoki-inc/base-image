@@ -15,7 +15,7 @@ if [ ! -f "$FILEPATH" ]; then
   touch "$FILEPATH"
 fi
 
-# Append the existing terminal commands to ~/.bash_history
-history -a "$FILEPATH"
+# Copy terminal commands from ~/.bash_history to tmp/history.txt
+eval $COMMAND
 
 echo "Terminal history saved!"
