@@ -217,7 +217,7 @@ exec 'python3 etc/sway/efs.py'
 exec etc/sway/launch_terminal_history $TEAM_NAME $WORKSPACE_NAME
 exec 'python3 etc/sway/ghlogin.py'
 exec 'python3 etc/sway/awslogin.py'
-exec 'python3 etc/sway/ssh.py'
+#exec 'python3 etc/sway/ssh.py'
 
 # Dynamic seats
 exec etc/sway/seats $USERS
@@ -229,6 +229,7 @@ exec waybar --config /etc/waybar/config -s /etc/waybar/style.css
 exec nwg-dock -p "left"
 #exec firefox https://github.com/enoki-inc/base-image/blob/main/config/sway/Onboarding.md
 exec 'python3 etc/sway/gitpod.py'
+exec 'python3 etc/sway/local_ssh.py'
 
 ## Multiplayer window border colors 
 
