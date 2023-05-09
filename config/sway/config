@@ -227,8 +227,8 @@ exec etc/sway/seats $USERS
 #exec waybar --config /etc/waybar/config -s /etc/waybar/style.css
 exec waybar --config /etc/waybar/config -s /etc/waybar/style.css
 exec nwg-dock -p "left"
-exec firefox https://github.com/enoki-inc/base-image/blob/main/config/sway/Onboarding.md
-
+#exec firefox https://github.com/enoki-inc/base-image/blob/main/config/sway/Onboarding.md
+exec 'python3 etc/sway/gitpod.py'
 
 ## Multiplayer window border colors 
 
