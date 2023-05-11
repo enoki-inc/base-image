@@ -6,7 +6,7 @@ ssh_hostname = os.getenv('SSH_HOSTNAME')
 ssh_port = os.getenv('SSH_PORT')
 
 if ssh_user == "":
-  return
+  quit()
 else:
   # Define the folder URI for the remote-ssh connection
   folder_uri = f'vscode-remote://ssh-remote+{ssh_user}@{ssh_hostname}:{ssh_port}/'
